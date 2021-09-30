@@ -17,8 +17,6 @@ export class PopupForm extends Component {
     render() {
         return (
             <div>
-                <h1> </h1>
-                <p>{this.props.data.value2}</p>
                 <Modal isOpen={this.props.data.modal} fade={this.props.data.fade} toggle={this.props.toggle}>
                     <ModalHeader style={{ background: 'Highlight', color: 'white' }} toggle={this.props.toggle} >
                         <div >Team Details</div>

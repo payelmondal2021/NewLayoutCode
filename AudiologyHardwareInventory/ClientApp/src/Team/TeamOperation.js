@@ -198,8 +198,19 @@ export class TeamOperation extends Component {
         );
     }
 
-    async populateTeamData() {
-        const response = await fetch('api/Team');
+    //async populateTeamData() {
+    //    const response = await fetch('api/Team');
+    //    const data = await response.json();
+    //    if (data.length != 0) {
+    //        const teamId = Enumerable.from(data)
+    //            .max(s => s.teamId);
+    //        this.setState({ teamInfo: data, message: '', update: false, maxTeamId: teamId + 1 });
+    //    }
+    //    else
+    //        this.setState({ teamInfo: data, message: '', maxTeamId: 0, update: false });
+    //}
+      async populateTeamData() {
+          const response = await fetch('api/Team');
         const data = await response.json();
         if (data.length != 0) {
             const teamId = Enumerable.from(data)

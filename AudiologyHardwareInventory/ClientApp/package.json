@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@syncfusion/ej2-react-dropdowns": "^19.2.62",
     "bootstrap": "^4.1.3",
     "jquery": "^3.4.1",
     "linq": "^3.2.4",

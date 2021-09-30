@@ -1,7 +1,6 @@
 using AudiologyHardwareInventory.BusinessLayer;
-using AudiologyHardwareInventory.DataAccessLayer;
-using AudiologyHardwareInventory.Interface;
-using AudiologyHardwareInventory.Models;
+using BL.DtoEntities;
+using BL.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -16,6 +15,7 @@ namespace AudiologyHardwareInventory
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -25,13 +25,19 @@ namespace AudiologyHardwareInventory
         {
 
             services.AddControllersWithViews();
-            services.AddTransient<IRepository<Team>, GenericRepository<Team>>();
-            services.AddTransient<IRepository<HearingAId>, GenericRepository<HearingAId>>();
-            services.AddTransient<IRepository<ChipSet>, GenericRepository<ChipSet>>();
+            //services.AddTransient<IRepository<DtoTeam>, GenericRepository<DtoTeam>>();
+            //services.AddTransient<IRepository<HearingAId>, GenericRepository<HearingAId>>();
+            //services.AddTransient<IRepository<ChipSet>, GenericRepository<ChipSet>>();
             services.AddScoped<ITeam, TeamOperations>();
-            services.AddScoped<IHearingAId, HearingAIdOperations>();
+            //services.AddScoped<IHearingAId, HearingAIdOperations>();
             services.AddScoped<IChipSet, ChipSetOperations>();
-            // MyAppData.data = services.AddTransient<TeamOperations>();
+            services.AddScoped<IPlatform, PlatformOperations>();
+            services.AddScoped<IBrand, BrandOperations>();
+            services.AddScoped<IHardwareType, HardwareTypeOperations>();
+            services.AddScoped<IImages, ImagesOperations>();
+            services.AddScoped<IHearingAId, HearingAIdOperations>();
+            services.AddScoped<IMobile, MobileOperations>();
+            //MyAppData.data = services.AddTransient<TeamOperations>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

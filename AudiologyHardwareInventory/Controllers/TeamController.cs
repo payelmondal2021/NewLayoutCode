@@ -1,18 +1,13 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using AudiologyHardwareInventory.Models;
-using AudiologyHardwareInventory.Interface;
-using System.Net.Http;
+using BL.DtoEntities;
+using BL.Interface;
 
 namespace AudiologyHardwareInventory.Controllers
 {
- 
+
     [Route("api/[controller]")]
     [ApiController]
     public class TeamController : Controller
@@ -22,38 +17,36 @@ namespace AudiologyHardwareInventory.Controllers
 
 
 
-        public TeamController(ILogger<TeamController> logger,ITeam team)
+        public TeamController(ILogger<TeamController> logger, ITeam team)
         {
             _logger = logger;
             this._team = team;
         }
         [HttpGet]
-        public IEnumerable<Team> Get()
+        public IEnumerable<DtoTeam> Get()
         {
             var chipSet = _team.DisplayTeamStatus();
             return chipSet;
         }
 
-
         [HttpPost]
         [Route("Create")]
-        public void CreateTeam([FromBody] Team team)
+        public void CreateTeam([FromBody] DtoTeam team)
         {
-            //var maxId = _team.DisplayTeamStatus().Max(a => a.TeamId);
-            //team.TeamId = maxId + 1;
-             _team.InsertNewTeam(team);
+
+            _team.InsertNewTeam(team);
         }
 
         [HttpPost]
         [Route("Update")]
-        public void UpdateTeam([FromBody] Team team)
+        public void UpdateTeam([FromBody] DtoTeam team)
         {
             _team.UpdateTeam(team);
         }
-        
+
         [HttpPost]
         [Route("Delete")]
-        public void DeleteTeam([FromBody] Team team)
+        public void DeleteTeam([FromBody] DtoTeam team)
         {
             _team.DeleteTeam(team);
         }

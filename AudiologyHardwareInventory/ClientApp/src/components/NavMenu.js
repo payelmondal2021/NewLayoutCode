@@ -25,16 +25,15 @@ export class NavMenu extends Component {
         return (
             <div>
                 <Nav defaultActiveKey="/counter" className="flex-column">
-                    <NavLink tag={Link} className="text-dark" to="/"><span>Hearing Aid</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Mobile Phones</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/hearingAid"><span>Hearing Aid</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/platform-data"><span>Platform</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/image"><span>Images</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/team-data"><span>Teams</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/"><span>Platforms</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Manufacturer</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Mobile Models</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/"><span>Hardware Type</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Manufacturer</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Chipset Type</span></NavLink>
-                  
+                    <NavLink tag={Link} className="text-dark" to="/mobile"><span>Mobile</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/hardwareType"><span>Hardware Type</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/brand"><span>Brand</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Chipset Type</span></NavLink>                 
                 </Nav>
             </div>
         );

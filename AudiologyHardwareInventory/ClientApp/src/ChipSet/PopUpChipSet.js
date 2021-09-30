@@ -17,8 +17,6 @@ export class PopUpChipSet extends Component {
     render() {
         return (
             <div>
-                <h1> </h1>
-                
                 <Modal isOpen={this.props.data.modal} fade={this.props.data.fade} toggle={this.props.toggle}>
                     <ModalHeader style={{ background: 'Highlight', color: 'white' }} toggle={this.props.toggle} >
                         <div >Chipset Details</div>
