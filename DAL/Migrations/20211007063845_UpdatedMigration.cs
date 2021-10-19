@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DAL.Migrations
 {
-    public partial class Migration2 : Migration
+    public partial class UpdatedMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +35,20 @@ namespace DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ChipsSet", x => x.ChipSetId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FamilyType",
+                columns: table => new
+                {
+                    FamilyTypeId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FamilyName = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FamilyType", x => x.FamilyTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,11 +87,26 @@ namespace DAL.Migrations
                     PlatformId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PlatformName = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Alias = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Platform", x => x.PlatformId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Programmers",
+                columns: table => new
+                {
+                    ProgrammerId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ProgrammerName = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Programmers", x => x.ProgrammerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -133,7 +162,9 @@ namespace DAL.Migrations
                     FirmwareVersion = table.Column<string>(type: "text", nullable: true),
                     Side = table.Column<string>(type: "text", nullable: true),
                     TeamId = table.Column<int>(type: "integer", nullable: false),
-                    PlatformId = table.Column<int>(type: "integer", nullable: false)
+                    PlatformId = table.Column<int>(type: "integer", nullable: false),
+                    FamilyTypeId = table.Column<int>(type: "integer", nullable: false),
+                    ProgrammerId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,10 +176,22 @@ namespace DAL.Migrations
                         principalColumn: "BrandId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_HearingAId_FamilyType_FamilyTypeId",
+                        column: x => x.FamilyTypeId,
+                        principalTable: "FamilyType",
+                        principalColumn: "FamilyTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_HearingAId_Platform_PlatformId",
                         column: x => x.PlatformId,
                         principalTable: "Platform",
                         principalColumn: "PlatformId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HearingAId_Programmers_ProgrammerId",
+                        column: x => x.ProgrammerId,
+                        principalTable: "Programmers",
+                        principalColumn: "ProgrammerId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_HearingAId_Team_TeamId",
@@ -206,9 +249,19 @@ namespace DAL.Migrations
                 column: "BrandId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_HearingAId_FamilyTypeId",
+                table: "HearingAId",
+                column: "FamilyTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HearingAId_PlatformId",
                 table: "HearingAId",
                 column: "PlatformId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HearingAId_ProgrammerId",
+                table: "HearingAId",
+                column: "ProgrammerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HearingAId_TeamId",
@@ -251,7 +304,13 @@ namespace DAL.Migrations
                 name: "Mobile");
 
             migrationBuilder.DropTable(
+                name: "FamilyType");
+
+            migrationBuilder.DropTable(
                 name: "Platform");
+
+            migrationBuilder.DropTable(
+                name: "Programmers");
 
             migrationBuilder.DropTable(
                 name: "HardwareType");

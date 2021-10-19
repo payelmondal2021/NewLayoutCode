@@ -35,6 +35,16 @@ namespace DAL.Entities
         public int PlatformId { get; set; }
         public Platform Platform { get; set; }
 
+        [ForeignKey("FamilyType")]
+        public int FamilyTypeId { get; set; }
+
+        public FamilyType FamilyType { get; set; }
+
+        [ForeignKey("Programmers")]
+        public int ProgrammerId { get; set; }
+
+        public Programmers Programmers { get; set; }
+
         //[ForeignKey("Images")]
         //public int ImageUrlId { get; set; }
         //public Images Images { get; set; }

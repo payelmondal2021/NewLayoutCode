@@ -19,7 +19,7 @@ export class PlatformOperation extends Component {
             //    value3: ""
             //},
             platformInfo: [], loading: true, modal: false, clicked: false, update: '', platformId: '', Button: 'Delete', maxPlatformId: 0,
-            fade: false, platformName: '', description: '',message: 'Loading....', visible: false
+            fade: false, platformName: '', description: '', message: 'Loading....', visible: false, alias: false
         };
 
         this.toggle = this.toggle.bind(this);
@@ -27,7 +27,7 @@ export class PlatformOperation extends Component {
     }
 
     toggle(e) {
-        this.setState({ platformId: '', platformName: '', description: '' });
+        this.setState({ platformId: '', platformName: '', description: '', alias:'' });
         this.setState({
             modal: !this.state.modal,
             update: false
@@ -40,11 +40,13 @@ export class PlatformOperation extends Component {
         if (this.state.update == false) {
             var platformName = document.getElementById('txtPlatformName').value;
             var description = document.getElementById('txtDescription').value;
+            var alias = document.getElementById('txtAlias').value;
 
             let platform = {
                 PlatformId: this.state.maxPlatformId,
                 PlatformName: platformName,
-                Description: description
+                Description: description,
+                Alias: alias
             };
 
             this.create(platform);
@@ -55,7 +57,8 @@ export class PlatformOperation extends Component {
             {
                 platformId: this.state.platformId,
                 platformName: document.getElementById('txtPlatformName').value,
-                description: document.getElementById('txtDescription').value
+                description: document.getElementById('txtDescription').value,
+                alias: document.getElementById('txtAlias').value
             };
             this.update(platform);
         }
@@ -72,7 +75,7 @@ export class PlatformOperation extends Component {
 
             onClick: e => {
                 const btnId = e.target.dataset.id;
-                this.setState({ platformId: rowInfo.row.platformId, platformName: rowInfo.row.platformName, description: rowInfo.row.description });
+                this.setState({ platformId: rowInfo.row.platformId, alias: rowInfo.row.alias, platformName: rowInfo.row.platformName, description: rowInfo.row.description });
                 if (btnId == "editButtonId") {
                     this.setState({
                         modal: !this.state.modal,
@@ -85,7 +88,8 @@ export class PlatformOperation extends Component {
                     {
                         PlatformId: rowInfo.row.platformId,
                         PlatformName: rowInfo.row.platformName,
-                        Description: rowInfo.row.description
+                        Description: rowInfo.row.description,
+                        Alias: rowInfo.row.alias
                     };
                     Swal.fire({
                         title: 'Are you sure?',
@@ -149,7 +153,11 @@ export class PlatformOperation extends Component {
                                     {
                                         Header: () => <strong>Description</strong>,
                                         accessor: 'description',
-                                    },                                    
+                                    },
+                                    {
+                                        Header: () => <strong>Alias</strong>,
+                                        accessor: 'alias',
+                                    },
                                     {
                                         Header: "Action",
                                         accessor: "Button",

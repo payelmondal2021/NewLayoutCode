@@ -28,6 +28,8 @@ namespace BL.MappingEntity
                 dtoHearingAId.Side = hearingAId.Side;
                 dtoHearingAId.TeamId = hearingAId.TeamId;
                 dtoHearingAId.PlatformId = hearingAId.PlatformId;
+                dtoHearingAId.FamilyTypeId = hearingAId.FamilyTypeId;
+                dtoHearingAId.ProgrammerId = hearingAId.ProgrammerId;
                 dtoHearingAIdList.Add(dtoHearingAId);
             }
             return dtoHearingAIdList;
@@ -50,6 +52,8 @@ namespace BL.MappingEntity
             hearingAId.Side = item.Side;
             hearingAId.TeamId = item.TeamId;
             hearingAId.PlatformId = item.PlatformId;
+            hearingAId.FamilyTypeId = item.FamilyTypeId;
+            hearingAId.ProgrammerId = item.ProgrammerId;
 
             return hearingAId;
         }

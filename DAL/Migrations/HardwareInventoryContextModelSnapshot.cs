@@ -60,6 +60,24 @@ namespace DAL.Migrations
                     b.ToTable("ChipsSet");
                 });
 
+            modelBuilder.Entity("DAL.Entities.FamilyType", b =>
+                {
+                    b.Property<int>("FamilyTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FamilyName")
+                        .HasColumnType("text");
+
+                    b.HasKey("FamilyTypeId");
+
+                    b.ToTable("FamilyType");
+                });
+
             modelBuilder.Entity("DAL.Entities.HardwareType", b =>
                 {
                     b.Property<int>("HardwareTypeId")
@@ -97,6 +115,9 @@ namespace DAL.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<int>("FamilyTypeId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("FirmwareVersion")
                         .HasColumnType("text");
 
@@ -104,6 +125,9 @@ namespace DAL.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("PlatformId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProgrammerId")
                         .HasColumnType("integer");
 
                     b.Property<string>("SerialNumber")
@@ -125,7 +149,11 @@ namespace DAL.Migrations
 
                     b.HasIndex("BrandId");
 
+                    b.HasIndex("FamilyTypeId");
+
                     b.HasIndex("PlatformId");
+
+                    b.HasIndex("ProgrammerId");
 
                     b.HasIndex("TeamId");
 
@@ -237,6 +265,9 @@ namespace DAL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("Alias")
+                        .HasColumnType("text");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
@@ -246,6 +277,24 @@ namespace DAL.Migrations
                     b.HasKey("PlatformId");
 
                     b.ToTable("Platform");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Programmers", b =>
+                {
+                    b.Property<int>("ProgrammerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProgrammerName")
+                        .HasColumnType("text");
+
+                    b.HasKey("ProgrammerId");
+
+                    b.ToTable("Programmers");
                 });
 
             modelBuilder.Entity("DAL.Entities.Team", b =>
@@ -277,9 +326,21 @@ namespace DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DAL.Entities.FamilyType", "FamilyType")
+                        .WithMany()
+                        .HasForeignKey("FamilyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DAL.Entities.Platform", "Platform")
                         .WithMany()
                         .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Entities.Programmers", "Programmers")
+                        .WithMany()
+                        .HasForeignKey("ProgrammerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -291,7 +352,11 @@ namespace DAL.Migrations
 
                     b.Navigation("Brand");
 
+                    b.Navigation("FamilyType");
+
                     b.Navigation("Platform");
+
+                    b.Navigation("Programmers");
 
                     b.Navigation("Team");
                 });

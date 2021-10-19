@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './DefaultReactTable.css';
-
+import './DropdownList.css';
 
 export class PopUpMobile extends Component {
     static displayName = PopUpMobile.name;
@@ -37,7 +37,7 @@ export class PopUpMobile extends Component {
             <div>               
                 <Modal isOpen={this.props.data.modal} fade={this.props.data.fade} toggle={this.props.toggle}>
                     <ModalHeader style={{ background: 'Highlight', color: 'white' }} toggle={this.props.toggle} >
-                        <div >HearingAid Details</div>
+                        <div >Mobile Details</div>
                     </ModalHeader>
                     <form onSubmit={this.props.handleSubmit}>
                         <ModalBody>
@@ -65,15 +65,19 @@ export class PopUpMobile extends Component {
                                 <label for="form7" class="pb-2">Select Brand  </label>
                                 <select id="brandId" rows="2" cols="60">
                                     {brandList}
-                                </select>{'  '}
-                                <label for="form7" class="pb-2">Select Team</label>
-                                <select id="teamId" rows="2" cols="60">
-                                    {teamList}
-                                </select> {'  '}
-                                <label for="form7" class="pb-2"> Select Chipset  </label>
-                                <select id="chipsetId" rows="2" cols="60">
-                                    {chipsetList}
                                 </select>
+                                <div class="dropdown">
+                                    <label for="form7" class="pb-2">Select Team</label>
+                                    <select id="teamId" rows="2" cols="60">
+                                        {teamList}
+                                    </select> 
+                                </div>
+                                <div class="dropdown">
+                                    <label for="form7" class="pb-2"> Select Chipset  </label>
+                                    <select id="chipsetId" rows="2" cols="60">
+                                        {chipsetList}
+                                    </select>
+                                </div>                          
                             </div>
                         </ModalBody>
                         <ModalFooter >

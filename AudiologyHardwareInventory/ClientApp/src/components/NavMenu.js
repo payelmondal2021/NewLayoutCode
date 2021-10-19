@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Nav, Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+import { FamilyTypeOperation } from '../FamilyType/FamilyTypeOperation';
+
 
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
@@ -24,6 +26,7 @@ export class NavMenu extends Component {
     render() {
         return (
             <div>
+                
                 <Nav defaultActiveKey="/counter" className="flex-column">
                     <NavLink tag={Link} className="text-dark" to="/hearingAid"><span>Hearing Aid</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/platform-data"><span>Platform</span></NavLink>
@@ -33,8 +36,13 @@ export class NavMenu extends Component {
                     <NavLink tag={Link} className="text-dark" to="/mobile"><span>Mobile</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/hardwareType"><span>Hardware Type</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/brand"><span>Brand</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Chipset Type</span></NavLink>                 
+                    <NavLink tag={Link} className="text-dark" to="/chipset"><span>Chipset Type</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/familyType" ><span>Family Type</span></NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/programmer"><span>Programmers</span></NavLink>
+                    
                 </Nav>
+             
+              
             </div>
         );
     }

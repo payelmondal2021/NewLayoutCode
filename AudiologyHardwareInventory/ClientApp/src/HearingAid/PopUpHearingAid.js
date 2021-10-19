@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './DefaultReactTable.css';
-
+import './DropdownList.css';
 
 export class PopUpHearingAid extends Component {
     static displayName = PopUpHearingAid.name;
@@ -17,6 +17,20 @@ export class PopUpHearingAid extends Component {
             && this.props.data.brandInfo.map((item, i) => {
                 return (
                     <option key={i} value={item.brandId}>{item.brandName}</option>
+                )
+            }, this);
+
+        let familyTypeList = this.props.data.familyTypeInfo.length > 0
+            && this.props.data.familyTypeInfo.map((item, i) => {
+                return (
+                    <option key={i} value={item.familyTypeId}>{item.familyName}</option>
+                )
+            }, this);
+
+        let programmerList = this.props.data.programmerInfo.length > 0
+            && this.props.data.programmerInfo.map((item, i) => {
+                return (
+                    <option key={i} value={item.programmerId}>{item.programmerName}</option>
                 )
             }, this);
 
@@ -54,18 +68,35 @@ export class PopUpHearingAid extends Component {
                                 <textarea required id="txtFirmwareVersion" defaultValue={this.props.data.firmwareVersion} placeholder="Please Enter Firmware Version" rows="2" cols="60" />
                                 <label for="form7" class="pb-2">Side</label><br></br>
                                 <textarea required id="txtSide" defaultValue={this.props.data.side} placeholder="Please Enter Side" rows="2" cols="60" />
-                                <label for="form7" class="pb-2">Select Brand  </label>
-                                <select id="brandId" rows="2" cols="60">
+                                <label for="form7" class="pb-2">Select Brand  </label>                           
+                                 <select id="brandId" rows="2" cols="60" >
                                     {brandList}
-                                </select>{'  '}
+                                </select><br />
+                                <div class="dropdown">
                                 <label for="form7" class="pb-2">Select Team  </label>
-                                <select id="teamId" rows="2" cols="60">
-                                    {teamList}
-                                </select> {'  '}
-                                <label for="form7" class="pb-2"> Select PlatForm  </label>
-                                <select id="platformId" rows="2" cols="60">
-                                    {platformList}
-                                </select>
+                                    <select id="teamId" rows="2" cols="60">
+                                        {teamList}
+                                    </select>
+                                </div><span></span>
+                                <div class="dropdown">
+                                    <label for="form7" class="pb-2">Select Family Type </label>
+                                    <select id="familyId" rows="2" cols="60">
+                                        {familyTypeList}
+                                    </select>
+                                </div><span></span>
+                                <div class="dropdown">
+                                    <label for="form7" class="pb-2">Select Programmer</label>
+                                    <select id="programmerId" rows="2" cols="60">
+                                        {programmerList}
+                                    </select>
+                                </div><span></span>
+                                <div class="dropdown">                                  
+                                    <label for="form7" class="pb-2"> Select PlatForm  </label>
+                                    <select id="platformId" rows="2" cols="60">
+                                        {platformList}
+                                    </select><br />
+                                </div>
+                                
                             </div>
                         </ModalBody>
                         <ModalFooter >

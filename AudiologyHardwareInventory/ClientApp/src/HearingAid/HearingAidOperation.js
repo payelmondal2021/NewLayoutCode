@@ -13,7 +13,7 @@ export class HearingAidOperation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hearingAidInfo: [],brandInfo:[],teamInfo:[],platformInfo:[],
+            programmerInfo: [],familyTypeInfo: [],Info: [],hearingAidInfo: [],brandInfo:[],teamInfo:[],platformInfo:[],
             loading: true, modal: false, clicked: false, update: '', hearingAidId: '', Button: 'Delete', maxHearingAidId: 0,
             fade: false, hearingAidName: '', addedDate: '', updatedDate: '', brandId:'',teamId:'',platformId:'', deletedDate:'', serialNumber: '', description: '', status: '', firmwareVersion: '', side:'', message: 'Loading....', visible: false
         };
@@ -23,7 +23,7 @@ export class HearingAidOperation extends Component {
     }
     
     toggle(e) {
-        this.setState({ hearingAidId: '', hearingAidName: '', addedDate: '', updatedDate: '', brandId: '', teamId: '', platformId: '', deletedDate: '', serialNumber: '', description: '', status: '', firmwareVersion: '', side: ''});
+        this.setState({ hearingAidId: '', hearingAidName: '', addedDate: '', updatedDate: '', brandId: '', familyTypeId: '', programmerId: '', teamId: '', platformId: '', deletedDate: '', serialNumber: '', description: '', status: '', firmwareVersion: '', side: ''});
         this.setState({
             modal: !this.state.modal,
             update: false
@@ -42,6 +42,8 @@ export class HearingAidOperation extends Component {
         var teamId = Number(document.getElementById('teamId').value);
         var platformId = Number(document.getElementById('platformId').value);
         var brandId = Number(document.getElementById('brandId').value);
+        var programmerId = Number(document.getElementById('programmerId').value);
+        var familyTypeId = Number(document.getElementById('familyId').value);
 
         if (this.state.update == false) {
             let hearingAid = {
@@ -55,6 +57,8 @@ export class HearingAidOperation extends Component {
                 TeamId: teamId,
                 PlatformId: platformId,
                 BrandId: brandId,
+                programmerId: programmerId,
+                familyTypeId: familyTypeId,
                 AddedDate: new Date().toLocaleString(),
                 UpdatedDate: "",
                 DeletedDate: ""
@@ -76,6 +80,8 @@ export class HearingAidOperation extends Component {
                 TeamId: teamId,
                 PlatformId: platformId,
                 BrandId: brandId,
+                programmerId: programmerId,
+                familyTypeId: familyTypeId,
                 AddedDate: this.state.addedDate,
                 UpdatedDate: new Date().toLocaleString(),
                 DeletedDate: this.state.deletedDate
@@ -91,6 +97,8 @@ export class HearingAidOperation extends Component {
         this.getPlatformData();
         this.getTeamData();
         this.getHearingAidStatus();
+        this.getFamilyType();
+        this.getProgrammer();
     }
 
     onRowClick = (state, rowInfo, column, instance) => {
@@ -98,7 +106,7 @@ export class HearingAidOperation extends Component {
 
             onClick: e => {
                 const btnId = e.target.dataset.id;
-                this.setState({ hearingAidId: rowInfo.row.id, hearingAidName: rowInfo.row.hearingAidName, serialNumber: rowInfo.row.serialNumber, status: rowInfo.row.status, description: rowInfo.row.description, firmwareVersion: rowInfo.row.firmwareVersion, side: rowInfo.row.side, teamId: rowInfo.row.teamId, platformId: rowInfo.row.platformId, brandId: rowInfo.row.brandId, serialNumber: rowInfo.row.serialNumber, serialNumber: rowInfo.row.serialNumber, serialNumber: rowInfo.row.serialNumber, addedDate: rowInfo.row.addedDate, updatedDate: rowInfo.row.updatedDate, deletedDate: rowInfo.row.deletedDate });
+                this.setState({ hearingAidId: rowInfo.row.id, hearingAidName: rowInfo.row.hearingAidName, serialNumber: rowInfo.row.serialNumber, status: rowInfo.row.status, description: rowInfo.row.description, firmwareVersion: rowInfo.row.firmwareVersion, side: rowInfo.row.side, teamId: rowInfo.row.teamId, platformId: rowInfo.row.platformId, brandId: rowInfo.row.brandId, familyTypeId: rowInfo.row.familyTypeId, programmerId: rowInfo.row.programmerId, serialNumber: rowInfo.row.serialNumber, serialNumber: rowInfo.row.serialNumber, serialNumber: rowInfo.row.serialNumber, addedDate: rowInfo.row.addedDate, updatedDate: rowInfo.row.updatedDate, deletedDate: rowInfo.row.deletedDate });
                 if (btnId == "editButtonId") {
                     this.setState({
                         modal: !this.state.modal,
@@ -120,6 +128,8 @@ export class HearingAidOperation extends Component {
                         teamId: rowInfo.row.teamId,
                         platformId: rowInfo.row.platformId,
                         brandId: rowInfo.row.brandId,
+                        familyTypeId: rowInfo.row.familyTypeId,
+                        programmerId: rowInfo.row.programmerId,
                         serialNumber: rowInfo.row.serialNumber,
                         serialNumber: rowInfo.row.serialNumber,
                         serialNumber: rowInfo.row.serialNumber,
@@ -225,6 +235,14 @@ export class HearingAidOperation extends Component {
                                         accessor: 'platformId',
                                     },
                                     {
+                                        Header: () => <strong>FamilyType Id</strong>,
+                                        accessor: 'familyTypeId',
+                                    },
+                                    {
+                                        Header: () => <strong>Programmer Id</strong>,
+                                        accessor: 'programmerId',
+                                    },
+                                    {
                                         Header: "Action",
                                         accessor: "Button",
                                         Cell: ({ row }) => (
@@ -271,6 +289,17 @@ export class HearingAidOperation extends Component {
         const response = await fetch('api/Brand');
         const data = await response.json();
         this.setState({ brandInfo: data});
+    }
+
+    async getFamilyType() {
+        const response = await fetch('api/FamilyType');
+        const data = await response.json();
+        this.setState({ familyTypeInfo: data });
+    }
+    async getProgrammer() {
+        const response = await fetch('api/Programmer');
+        const data = await response.json();
+        this.setState({ programmerInfo: data });
     }
 
     async getTeamData() {

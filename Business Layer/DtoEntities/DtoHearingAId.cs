@@ -35,6 +35,17 @@ namespace BL.DtoEntities
         public int PlatformId { get; set; }
         public DtoPlatform Platform { get; set; }
 
+
+        [ForeignKey("FamilyType")]
+        public int FamilyTypeId { get; set; }
+
+        public DtoFamilyType FamilyType { get; set; }
+
+        [ForeignKey("Programmers")]
+        public int ProgrammerId { get; set; }
+
+        public DtoProgrammers Programmers { get; set; }
+
         //[ForeignKey("Images")]
         //public int ImageUrlId { get; set; }
         //public Images Images { get; set; }

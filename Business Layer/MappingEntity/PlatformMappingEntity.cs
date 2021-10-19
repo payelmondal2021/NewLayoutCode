@@ -18,6 +18,7 @@ namespace BL.MappingEntity
                 c.PlatformId = entity.PlatformId;
                 c.PlatformName = entity.PlatformName;
                 c.Description = entity.Description;
+                c.Alias = entity.Alias;
                 dtoPlatformList.Add(c);
             }
             return dtoPlatformList;
@@ -30,6 +31,7 @@ namespace BL.MappingEntity
             platform.PlatformId = item.PlatformId;
             platform.PlatformName = item.PlatformName;
             platform.Description = item.Description;
+            platform.Alias = item.Alias;
 
             return platform;
         }

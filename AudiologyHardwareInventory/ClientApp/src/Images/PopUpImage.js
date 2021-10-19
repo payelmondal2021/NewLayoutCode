@@ -33,9 +33,12 @@ export class PopUpImage extends Component {
                                 <textarea required id="txtImageUrl" defaultValue={this.props.data.imageUrl} placeholder="Please Enter Image Url" rows="2" cols="60" />
                                 <label for="form7" class="pb-2">ID</label><br></br>
                                 <textarea required id="txtId" defaultValue={this.props.data.id} placeholder="Please Enter Id" rows="2" cols="60" />
-                                <select id="hardwareTypeId">
-                                    {hardwareList}
-                                </select>
+                                <div class="dropdown">
+                                    <label for="form7" class="pb-2">Select HardwareType</label><br></br>
+                                    <select id="hardwareTypeId">
+                                        {hardwareList}
+                                    </select>
+                                </div>                      
                             </div>
                         </ModalBody>
                         <ModalFooter >

@@ -26,13 +26,14 @@ namespace DAL
             {
                 //optionsBuilder.UseSqlServer(@"Server=MD2VGA1C\LOCAL_MS_SQL;Database=HardWareInventory;Trusted_Connection=True;MultipleActiveResultSets=True;");
                 //optionsBuilder.UseNpgsql("Host=localhost;Database=TestDatabase;Username=postgres;Password=abcd");
-                optionsBuilder.UseNpgsql("Host=localhost;Database=HardWareInventoryDatabase;Username=postgres;Password=abcd");
+                optionsBuilder.UseNpgsql("Host=localhost;Database=AUHardWareInventory;Username=postgres;Password=abcd");
             }
 
         }
-    
 
 
+        public DbSet<FamilyType> FamilyType { get; set; }
+        public DbSet<Programmers> Programmers { get; set; }
         public DbSet<Team> Team { get; set; }
         public DbSet<Manufacturer> Manufacturer { get; set; }
         public DbSet<Platform> Platform { get; set; }
@@ -43,5 +44,7 @@ namespace DAL
         // public DbSet<MobileModels> MobileModels { get; set; }
         public DbSet<HardwareType> HardwareType { get; set; }
         public DbSet<Brand> Brand { get; set; }
+
+    
     }
 }

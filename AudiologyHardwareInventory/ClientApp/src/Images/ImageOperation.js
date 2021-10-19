@@ -6,6 +6,9 @@ import './DefaultReactTable.css';
 import { PopUpImage } from './PopUpImage.js';
 import Enumerable from 'linq';
 import Swal from 'sweetalert2';
+import './DropdownList.css';
+/*import pic from "../HardwareImage/download.png";*/
+import { WebImage } from './WebImage';
 
 export class ImageOperation extends Component {
     static displayName = ImageOperation.name;
@@ -113,6 +116,8 @@ export class ImageOperation extends Component {
         return (
             <div><br></br>
                 <h2 id="tabelLabel" >Manage Image</h2><br></br>
+               {/* To import Image*/}
+                {/*  <WebImage/>*/}
                 <div>
                     <Button color='info' onClick={this.toggle}>Add Image</Button>
                     <PopUpImage data={this.state} toggle={this.toggle} handleSubmit={this.handleSubmit} />

@@ -12,5 +12,7 @@ namespace BL.DtoEntities
         public int PlatformId { get; set; }
         public string PlatformName { get; set; }
         public string Description { get; set; }
+
+        public string Alias { get; set; }
     }
 }

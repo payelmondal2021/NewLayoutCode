@@ -232,7 +232,8 @@ export class TeamOperation extends Component {
             )
         })
         if (response.ok) {
-            this.sweetAlert()
+            
+            this.sweetAlert();
         }
     }
     async update(team) {

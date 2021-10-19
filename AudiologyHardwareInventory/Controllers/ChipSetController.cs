@@ -55,8 +55,5 @@ namespace AudiologyHardwareInventory.Controllers
         {
             _chipSet.DeleteChipSet(chipSet);
         }
-
-
-
     }
 }
