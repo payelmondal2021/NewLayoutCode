@@ -43,7 +43,7 @@ namespace AudiologyHardwareInventory.BusinessLayer
             var dtoHearingAId = _mappingEntity.ConvertToDtoHearingAId(hearingAId);
             return dtoHearingAId;
         }
-        public IEnumerable<DtoHearingAId> FilterDisplayForStatus()
+        public IEnumerable<DtoHearingAId> GetHearingAidByStatus()
         {
             var hearingAId = _hearingAIdRepository.Select();
             hearingAId = hearingAId.Where(x => x.Status != "Disabled");

@@ -39,6 +39,8 @@ namespace AudiologyHardwareInventory
             services.AddScoped<IMobile, MobileOperations>();
             services.AddScoped<IFamilyType, FamilyTypeOperation>();
             services.AddScoped<IProgrammers, ProgrammersOperation>();
+            services.AddScoped<IHearingAidSearch, SearchHearingAidOperation>();
+            services.AddScoped<ILogin, LoginOperations>();
             //MyAppData.data = services.AddTransient<TeamOperations>();
 
             // In production, the React files will be served from this directory

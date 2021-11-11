@@ -26,7 +26,7 @@ namespace AudiologyHardwareInventory.Controllers
         [Route("GetHeadingAidStatus")]
         public IEnumerable<DtoHearingAId> GetHeadingAidStatus()
         {
-            var hearingAid = _hearingAid.FilterDisplayForStatus();
+            var hearingAid = _hearingAid.GetHearingAidByStatus();
             return hearingAid;
         }
 

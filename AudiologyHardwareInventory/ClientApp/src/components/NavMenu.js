@@ -32,7 +32,8 @@ export class NavMenu extends Component {
                     <NavLink tag={Link} className="text-dark" to="/platform-data"><span>Platform</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/image"><span>Images</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/team-data"><span>Teams</span></NavLink>
-                    <NavLink tag={Link} className="text-dark" to="/"><span>Platforms</span></NavLink>
+                   {/* <NavLink tag={Link} className="text-dark" to="/"><span>Teams</span></NavLink>*/}
+                    {/*<NavLink tag={Link} className="text-dark" to="/"><span>Platforms</span></NavLink>*/}
                     <NavLink tag={Link} className="text-dark" to="/mobile"><span>Mobile</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/hardwareType"><span>Hardware Type</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/brand"><span>Brand</span></NavLink>

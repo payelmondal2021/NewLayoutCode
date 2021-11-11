@@ -3,7 +3,7 @@ import ReactTable from 'react-table-6'
 import REACTDOM from "react-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
-import './DefaultReactTable.css';
+/*import './DefaultReactTable.css';*/
 import { PopUpProgrammer } from './PopUpProgrammer.js';
 import Enumerable from 'linq';
 import Swal from 'sweetalert2';

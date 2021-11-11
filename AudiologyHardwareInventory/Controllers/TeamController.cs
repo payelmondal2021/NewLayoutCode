@@ -25,9 +25,11 @@ namespace AudiologyHardwareInventory.Controllers
         [HttpGet]
         public IEnumerable<DtoTeam> Get()
         {
-            var chipSet = _team.DisplayTeamStatus();
-            return chipSet;
+            var team = _team.DisplayTeamStatus();
+            return team;
         }
+
+       
 
         [HttpPost]
         [Route("Create")]

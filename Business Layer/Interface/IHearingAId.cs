@@ -14,6 +14,6 @@ namespace BL.Interface
         void UpdateHearingAId(DtoHearingAId hearingAId);
         void DeleteHearingAId(DtoHearingAId hearingAId);
         IEnumerable<DtoHearingAId> DisplayHearingAId();
-        IEnumerable<DtoHearingAId> FilterDisplayForStatus();
+        IEnumerable<DtoHearingAId> GetHearingAidByStatus();
     }
 }

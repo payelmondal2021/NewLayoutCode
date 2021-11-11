@@ -2,15 +2,17 @@
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(HardwareInventoryContext))]
-    partial class HardwareInventoryContextModelSnapshot : ModelSnapshot
+    [Migration("20211108122255_Updated2")]
+    partial class Updated2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,16 +187,13 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entities.Login", b =>
                 {
-                    b.Property<string>("UserName")
+                    b.Property<string>("UseName")
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("text");
-
-                    b.HasKey("UserName");
+                    b.HasKey("UseName");
 
                     b.ToTable("Login");
                 });

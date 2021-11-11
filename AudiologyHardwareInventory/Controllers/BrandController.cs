@@ -25,6 +25,7 @@ namespace AudiologyHardwareInventory.Controllers
         public IEnumerable<DtoBrand> Get()
         {
             var brand = _brand.DisplayBrand();
+            
             return brand;
         }
 

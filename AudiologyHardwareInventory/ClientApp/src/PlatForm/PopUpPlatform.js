@@ -2,7 +2,7 @@
 import ReactTable from 'react-table-6'
 import REACTDOM from "react-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './DefaultReactTable.css';
+/*import './DefaultReactTable.css';*/
 
 
 export class PopUpPlatform extends Component {
@@ -25,7 +25,7 @@ export class PopUpPlatform extends Component {
                     <form onSubmit={this.props.handleSubmit}>
                         <ModalBody>
                             <div >
-                                <label for="form7" class="pb-2">Team Name</label><br></br>
+                                <label for="form7" class="pb-2">Platform Name</label><br></br>
                                 <textarea required id="txtPlatformName" defaultValue={this.props.data.platformName} name="name" placeholder="Please Enter Team Name" rows="2" cols="60" />
                                 <label for="form7" class="pb-2">Description</label><br></br>
                                 <textarea required id="txtDescription" defaultValue={this.props.data.description} placeholder="Please Enter Description" name="name2" rows="2" cols="60" />

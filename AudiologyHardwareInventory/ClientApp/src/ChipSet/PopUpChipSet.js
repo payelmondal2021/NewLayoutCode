@@ -2,7 +2,7 @@
 import ReactTable from 'react-table-6'
 import REACTDOM from "react-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './DefaultReactTable.css';
+/*import './DefaultReactTable.css';*/
 
 
 export class PopUpChipSet extends Component {

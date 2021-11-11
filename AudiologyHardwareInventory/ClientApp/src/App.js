@@ -27,17 +27,17 @@ export default class App extends Component {
     render() {
         return (
             <Layout>
-                <Route exact path='/' component={Home} />
+                <Route exact path='/home' component={Home} />
                 {/*<Route path='/counter' component={Counter} />*/}
-                {/* <Route path='/fetch-data' component={FetchData} />*/}
-                {/*<Route path='/team-data' component={TeamOperation} />*/}
-                {/*<Route path='/chipset' component={ChipSetOperation} />*/}
-                {/*<Route path='/platform-data' component={PlatformOperation} />*/}
-                {/*<Route path='/brand' component={BrandOperation} />*/}
-                {/*<Route path='/hardwareType' component={HardwareTypeOperation} />*/}
-                {/*<Route path='/image' component={ImageOperation} />*/}
-                {/*<Route path='/hearingAid' component={HearingAidOperation} />*/}
-                {/*<Route path='/mobile' component={MobileOperation} />*/}
+                 {/*<Route path='/fetch-data' component={FetchData} />*/}
+                <Route path='/team-data' component={TeamOperation} />
+                <Route path='/chipset' component={ChipSetOperation} />
+                <Route path='/platform-data' component={PlatformOperation} />
+                <Route path='/brand' component={BrandOperation} />
+                <Route path='/hardwareType' component={HardwareTypeOperation} />
+                <Route path='/image' component={ImageOperation} />
+                <Route path='/hearingAid' component={HearingAidOperation} />
+                <Route path='/mobile' component={MobileOperation} />
                 <Route path='/familyType' component={FamilyTypeOperation} />
                 <Route path='/programmer' component={ProgrammerOperation} />
             </Layout>

@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './DefaultReactTable.css';
+/*import './DefaultReactTable.css';*/
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 
