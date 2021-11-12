@@ -1,18 +1,17 @@
-﻿
-/**//*Using testing purpose ..not using this js file*//**//**/
-
-import { extend } from 'jquery';
+﻿import { extend } from 'jquery';
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ReactTable from 'react-table-6'
+import ReactSession from 'react-client-session';
 
 export class AdminLogin extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            modal: true, fade: false, AdminLogin: '', loginStatus:''
+            modal: true, fade: false, AdminLogin: '', loginStatus: '', role: ''
         };
+       
     }
     
     LoginTrigger = (event) => {
@@ -29,6 +28,7 @@ export class AdminLogin extends Component {
     CancelTrigger = (event) => {
         this.setState({ modal: false });
     }
+  
     render() {
         return (
             <div class="container">
@@ -92,13 +92,13 @@ export class AdminLogin extends Component {
         const data = await response.json();
         if (data.length > 0)
         {
-            this.setState({ AdminLogin: 'success' });
+            this.setState({ AdminLogin: 'success'  });
         }
-        let val = "AdminLogin";
         if (this.state.AdminLogin == 'success') {
-            this.props.parentCallback(val);
+            this.props.parentCallback("AdminLogin", data[0].role);
             this.setState({ loginStatus: ' ' });
-
+            sessionStorage.setItem("role", data[0].role);
+            sessionStorage.setItem("user", "AdminLogin");
         }
         else {
             this.props.parentCallback('failed');

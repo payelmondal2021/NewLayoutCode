@@ -15,15 +15,14 @@ import { HearingAidOperation } from './HearingAid/HearingAidOperation';
 import { MobileOperation } from './Mobile/MobileOperation';
 import { FamilyTypeOperation } from './FamilyType/FamilyTypeOperation';
 import { ProgrammerOperation } from './Programmers/ProgrammerOperation';
+import { InsertAdmin } from './Admin/InsertAdmin';
 import { layoutTest } from './components/layoutTest';
 
 import './custom.css'
 
 export default class App extends Component {
     static displayName = App.name;
-
     
-
     render() {
         return (
             <Layout>
@@ -40,6 +39,7 @@ export default class App extends Component {
                 <Route path='/mobile' component={MobileOperation} />
                 <Route path='/familyType' component={FamilyTypeOperation} />
                 <Route path='/programmer' component={ProgrammerOperation} />
+                <Route path='/admin' component={InsertAdmin} />
             </Layout>
            
         );

@@ -5,6 +5,8 @@ import './Layout.css';
 import { NavMenuTest } from './NavMenuTest';
 import { Home } from './Home';
 import { AdminLogin } from './AdminLogin';
+import ReactSession from 'react-client-session';
+
 
 export class Layout extends Component {
     static displayName = Layout.name;
@@ -12,7 +14,7 @@ export class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            testval: '', testval1: '', login:''
+            testval: '', adminLogin: '', login: '',role:''
         };      
     }
    
@@ -23,7 +25,9 @@ export class Layout extends Component {
         var b = window.location.href.includes("familyType");
         if (window.location.href.includes("familyType"))
         {
-            this.setState({ testval: 'admin', testval1: 'AdminLogin'});
+            var userRole = sessionStorage.getItem("role");
+            var admin = sessionStorage.getItem("user");
+            this.setState({ testval: 'admin', adminLogin: admin, role: userRole});
         }
         if (window.location.href.includes("home")) {
             this.setState({ testval: 'home' });
@@ -38,8 +42,8 @@ export class Layout extends Component {
             this.setState({ testval: childData });
        
     }
-    handleLogin = (childData) => {
-        this.setState({ testval1: childData });
+    handleLogin = (adminlogin, role) => {
+        this.setState({ adminLogin: adminlogin, role: role });
        
     }
 
@@ -60,7 +64,7 @@ export class Layout extends Component {
                 {/*</div>*/}
             </div>
         </div>;
-        if (this.state.testval =='admin') {
+        if (this.state.testval == 'admin' && sessionStorage.getItem("user") == null) {
            
 
             contents = <div class="row content">
@@ -68,17 +72,19 @@ export class Layout extends Component {
             </div>;
             
         }
-        if (this.state.testval == 'admin' && this.state.testval1 == 'AdminLogin')
+        if (this.state.testval == 'admin' &&  sessionStorage.getItem("user") == 'AdminLogin')
         {
             
                 contents = <div class="row content">
                 <div class="col-sm-2 sidenav">
 
-                    <NavMenu  />
+                        {/*<NavMenu  />*/}
+                    <NavMenu data={this.state} />
                 </div>
-                <div class="col-sm-10 ">
-                    {this.props.children}
-                </div>
+                    <div class="col-sm-10 ">
+                        
+                        {this.props.children}
+                     </div>
                  </div>;
             
         }

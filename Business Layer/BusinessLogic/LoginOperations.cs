@@ -27,5 +27,10 @@ namespace AudiologyHardwareInventory.BusinessLayer
             var dtoLogin = _mappingEntity.ConvertToDtoLogin(login);
             return dtoLogin;
         }
+        public void InsertAdmin(DtoLogin admin)
+        {
+            var adminData = _mappingEntity.ConvertToLoginEntity(admin);
+            _loginRepository.Create(adminData);
+        }
     }
 }

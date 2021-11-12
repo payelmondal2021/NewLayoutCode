@@ -22,7 +22,7 @@ export class NavMenuTest extends Component {
             collapsed: !this.state.collapsed
         });
     }
-    onTrigger = (event) => {
+    clickAdmin = (event) => {
         let val = "admin";
         this.props.parentCallback(val);
         window.history.pushState('obj', 'newtitle', '/admin');
@@ -67,7 +67,7 @@ export class NavMenuTest extends Component {
                                 <NavItem>
                                     <NavLink to="/home">
                                      <span>
-                                            <button type="button" onClick={this.onTrigger}>
+                                            <button type="button" onClick={this.clickAdmin}>
                                             Admin </button>
                                     </span></NavLink>
                                 </NavItem>

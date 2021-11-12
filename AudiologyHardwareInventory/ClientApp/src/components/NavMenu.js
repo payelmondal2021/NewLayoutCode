@@ -3,6 +3,7 @@ import { Nav, Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, 
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import { FamilyTypeOperation } from '../FamilyType/FamilyTypeOperation';
+import { AdminLogin } from './AdminLogin';
 
 
 export class NavMenu extends Component {
@@ -13,7 +14,7 @@ export class NavMenu extends Component {
 
         this.toggleNavbar = this.toggleNavbar.bind(this);
         this.state = {
-            collapsed: true
+            collapsed: true,superAdmin:true,role:''
         };
     }
 
@@ -24,6 +25,13 @@ export class NavMenu extends Component {
     }
 
     render() {
+        var role = sessionStorage.getItem("role");
+        let contents='';
+        if (role == "SuperAdmin") {
+            contents = <NavLink tag={Link} className="text-dark" to="/admin"><span>Insert Admin</span></NavLink>;
+        }
+      
+       
         return (
             <div>
                 
@@ -40,7 +48,8 @@ export class NavMenu extends Component {
                     <NavLink tag={Link} className="text-dark" to="/chipset"><span>Chipset Type</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/familyType" ><span>Family Type</span></NavLink>
                     <NavLink tag={Link} className="text-dark" to="/programmer"><span>Programmers</span></NavLink>
-                    
+                    {contents}
+                            
                 </Nav>
              
               

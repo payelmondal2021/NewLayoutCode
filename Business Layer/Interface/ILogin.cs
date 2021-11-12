@@ -8,5 +8,6 @@ namespace BL.Interface
     public interface ILogin
     {
         IEnumerable<DtoLogin> AdminLogin();
+        void InsertAdmin(DtoLogin admin);
     }
 }

@@ -30,6 +30,13 @@ namespace AudiologyHardwareInventory.Controllers
             return loginStatus;
         }
 
+        [HttpPost]
+        [Route("Create")]
+        public void InserAdmin([FromBody] DtoLogin admin)
+        {
+            _login.InsertAdmin(admin);
+        }
+
 
     }
 }

@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AudiologyHardwareInventory.BusinessLayer
 {
+    //search
     public class SearchHearingAidOperation:IHearingAidSearch
     {
         private readonly IHearingAId _hearingAId;
